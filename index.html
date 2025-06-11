@@ -1,48 +1,280 @@
 <!DOCTYPE html>
-<html lang="sr">
+<html lang="bs">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vedad Kamerić - Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Goll.ba - Sa reklamama</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: #e8f0fe;
+    margin: 0; padding: 0;
+    color: #1a1a1a;
+  }
+
+  header {
+    background: linear-gradient(90deg, #004494, #0073e6);
+    padding: 14px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  .logo {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-right: 50px;
+    user-select: none;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  }
+
+  nav {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  nav a {
+    color: #dbe9ff;
+    text-decoration: none;
+    margin-right: 28px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 15px;
+    padding-bottom: 6px;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.4s ease, color 0.4s ease, transform 0.2s ease;
+    flex-shrink: 0;
+    user-select: none;
+  }
+  nav a:hover {
+    color: #ffffff;
+    border-bottom-color: #a8d1ff;
+    transform: scale(1.05);
+  }
+  nav a.active {
+    border-bottom-color: #fff;
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  main {
+    max-width: 1300px;
+    margin: 40px auto;
+    padding: 0 25px 60px;
+  }
+
+  .news-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 28px;
+  }
+
+  .news-item {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.08);
+    cursor: pointer;
+    display: block;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .news-item:hover {
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+    transform: translateY(-8px);
+  }
+
+  .news-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    transition: transform 0.4s ease;
+  }
+  .news-item:hover img {
+    transform: scale(1.05);
+  }
+
+  .news-item h3 {
+    color: #004a99;
+    font-size: 18px;
+    margin: 16px 18px 10px;
+    font-weight: 700;
+  }
+
+  .news-item p {
+    font-size: 14px;
+    color: #555;
+    padding: 0 18px 18px;
+    line-height: 1.4;
+  }
+
+  /* Stil reklama */
+  .ad-block {
+    background: #cbe1ff;
+    border: 2px dashed #0073e6;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+    color: #004494;
+    text-align: center;
+    height: 150px;
+    user-select: none;
+  }
+
+  @media (max-width: 1200px) {
+    .news-list {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (max-width: 700px) {
+    .news-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 450px) {
+    .news-list {
+      grid-template-columns: 1fr;
+    }
+    nav a {
+      font-size: 14px;
+      margin-right: 20px;
+      padding-bottom: 4px;
+    }
+  }
+</style>
 </head>
 <body>
-  <header>
-    <h1>Vedad Kamerić</h1>
-    <p>Mladi kreativac iz Kalesije</p>
-  </header>
 
-  <section id="about">
-    <h2>O meni</h2>
-    <p>Zovem se Vedad Kamerić, imam 12 godina i dolazim iz Kalesije. Volim Fotografiju </p>
+<header>
+  <div class="logo">Goll.ba</div>
+  <nav id="categoryNav">
+    <a href="#" class="active" data-kat="sve">Sve</a>
+    <a href="#" data-kat="fudbal">Fudbal</a>
+    <a href="#" data-kat="biznis">Biznis</a>
+    <a href="#" data-kat="zabava">Zabava</a>
+    <a href="#" data-kat="tech">Tech</a>
+    <a href="#" data-kat="sport">Sport</a>
+    <a href="#" data-kat="kultura">Kultura</a>
+    <a href="#" data-kat="politika">Politika</a>
+    <a href="#" data-kat="zdravlje">Zdravlje</a>
+    <a href="#" data-kat="auto">Auto</a>
+    <a href="#" data-kat="putovanja">Putovanja</a>
+    <a href="#" data-kat="edukacija">Edukacija</a>
+  </nav>
+</header>
+
+<main>
+  <section class="news-list" id="newsList">
+    <article class="news-item" data-kategorija="fudbal">
+      <img src="https://images.unsplash.com/photo-1516910817561-8c8a0e60f267?auto=format&fit=crop&w=400&q=60" alt="Fudbal 1" />
+      <h3>Fudbal: Tim ostvario važnu pobjedu</h3>
+      <p>Kratak opis fudbalske vijesti i rezultata utakmice.</p>
+    </article>
+
+    <article class="news-item" data-kategorija="biznis">
+      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=60" alt="Biznis 1" />
+      <h3>Biznis: Nova investicija u regiji</h3>
+      <p>Detalji o velikoj investiciji i njenom uticaju na lokalnu ekonomiju.</p>
+    </article>
+
+    <article class="news-item" data-kategorija="fudbal">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=400&q=60" alt="Fudbal 2" />
+      <h3>Fudbal: Pripreme za veliku utakmicu</h3>
+      <p>Kako se timovi pripremaju za predstojeći važan meč.</p>
+    </article>
+
+    <!-- Reklama -->
+    <div class="ad-block">REKLAMA</div>
+
+    <article class="news-item" data-kategorija="zabava">
+      <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=400&q=60" alt="Zabava 1" />
+      <h3>Zabava: Novi film premijerno prikazan</h3>
+      <p>Šta publika kaže o novom filmu i prve reakcije kritike.</p>
+    </article>
+
+    <article class="news-item" data-kategorija="tech">
+      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=60" alt="Tech 1" />
+      <h3>Tech: Nova aplikacija osvaja tržište</h3>
+      <p>Opis nove aplikacije koja brzo postaje popularna među korisnicima.</p>
+    </article>
+
+    <article class="news-item" data-kategorija="sport">
+      <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=400&q=60" alt="Sport 1" />
+      <h3>Sport: Najnoviji rezultati i analize</h3>
+      <p>Pregled važnih sportskih događaja proteklog vikenda.</p>
+    </article>
+
+    <!-- Reklama -->
+    <div class="ad-block">REKLAMA</div>
+
+    <article class="news-item" data-kategorija="politika">
+      <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=400&q=60" alt="Politika 1" />
+      <h3>Politika: Nova reforma zakonodavstva</h3>
+      <p>Šta donosi nova reforma i kako će uticati na građane.</p>
+    </article>
+
+    <article class="news-item" data-kategorija="fudbal">
+      <img src="https://images.unsplash.com/photo-1504610926078-a1611febcad3?auto=format&fit=crop&w=400&q=60" alt="Fudbal 3" />
+      <h3>Fudbal: Transfer vijesti sa tržišta</h3>
+      <p>Najnovije informacije o prelaznim rokovima i transferima.</p>
+    </article>
+
+    <!-- Dodaj još vijesti ili reklama po potrebi -->
+
   </section>
+</main>
 
-  <section id="portfolio">
-    <h2>Moji radovi</h2>
-    <div class="gallery">
-      <img src="slika.jpg1" alt="Rad 1">
-      <img src="slika.jpg2" alt="Rad 2">
-      <img src="slika.jpg5" alt="Rad 3">
-      <img src="slika.jpg6" alt="Rad 4">
-      <img src="slika.jpg7" alt="Rad 5">
-      <img src="slika.jpg8" alt="Rad 6">
-      <img src="slika.jbg9" alt="Rad 7">
-      <img src="slika.jpg10" alt="Rad 8">
-   </div
-  </section>
+<script>
+  const categoryLinks = document.querySelectorAll('#categoryNav a');
+  const newsItems = document.querySelectorAll('.news-item');
+  const ads = document.querySelectorAll('.ad-block');
 
-  <section id="contact">
-    <h2>Kontakt</h2>
-    <form action="#" method="post">
-      <input type="text" name="ime" placeholder="Tvoje ime" required>
-      <input type="email" name="email" placeholder="Tvoj email" required>
-      <textarea name="poruka" placeholder="Tvoja poruka" required></textarea>
-      <button type="submit">Pošalji</button>
-    </form>
-  </section>
+  categoryLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
 
-  <footer>
-    <p>&copy; Vedad Kamerić</p>
-  </footer>
+      categoryLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+
+      const kat = link.getAttribute('data-kat');
+
+      // Prikazuj ili skrivaj vijesti prema kategoriji
+      newsItems.forEach(item => {
+        if (kat === 'sve' || item.dataset.kategorija === kat) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      // Reklame uvek prikazane
+      ads.forEach(ad => {
+        ad.style.display = 'flex';
+      });
+    });
+  });
+</script>
+
 </body>
 </html>
+
+
+
+
